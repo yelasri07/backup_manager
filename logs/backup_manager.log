@@ -1,16 +1,24 @@
-[09/04/2026 15:30] New schedule added: test2;16:07;office_docs
-[09/04/2026 15:30] New schedule added: test2;16:07;office_docs
-[09/04/2026 15:30] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:31] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:31] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:31] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:31] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:31] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:31] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:31] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:32] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:32] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:32] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:32] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:32] Error: malformed schedule: test2;25:07;office_docs
-[09/04/2026 15:32] Error: malformed schedule: test2;25:07;office_docs
+[09/04/2026 17:16] Error: No such file or directory: 'backup_schedules.txt'
+[09/04/2026 17:16] Error: No such file or directory: 'backup_schedules.txt'
+[09/04/2026 17:16] Error: No such file or directory: 'backup_schedules.txt'
+[09/04/2026 17:16] Error: No such file or directory: 'backup_schedules.txt'
+[09/04/2026 17:16] New schedule added: test2;16:07;office_docs
+[09/04/2026 17:16] New schedule added: test2;16:07;office_docs
+[09/04/2026 17:16] New schedule added: test2;16:07;office_docs
+[09/04/2026 17:16] New schedule added: test2;16:07;office_docs
+[09/04/2026 17:17] Error: can't find backup_schedules.txt
+[09/04/2026 17:18] Error: can't find backup_schedules.txt
+[09/04/2026 17:18] Error: can't find backup_schedules.txt
+[09/04/2026 17:18] Error: can't find backup_schedules.txt
+[09/04/2026 17:18] Error: can't find backup_schedules.txt
+[09/04/2026 17:18] Error: can't find backup_schedules.txt
+[09/04/2026 17:18] Error: can't find backup_schedules.txt
+[09/04/2026 17:19] Error: can't find backup_schedules.txt
+[09/04/2026 17:19] Error: can't find backup_schedules.txt
+[09/04/2026 17:19] New schedule added: test2;16:07;office_docs
+[09/04/2026 17:19] New schedule added: test2;16:07;office_docs
+[09/04/2026 17:19] New schedule added: test2;16:07;office_docs
+[09/04/2026 17:19] Show schedules list
+[09/04/2026 17:19] Show schedules list
+[09/04/2026 17:19] Show schedules list
+[09/04/2026 17:19] Show schedules list

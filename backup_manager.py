@@ -41,30 +41,35 @@ def main():
             exit(1)
 
 def handle_create(schedule: str):
-
-    now = datetime.now()
-    current_time = now.strftime("%d/%m/%Y %H:%M")
-    log_message = f"[{current_time}] Error: malformed schedule: {schedule}"
+    log_message = f"Error: malformed schedule: {schedule}"
     if is_valid_schedule(schedule):
-        log_message = f"[{current_time}] New schedule added: {schedule}"
+        log_message = f"New schedule added: {schedule}"
         backup_schedules_file = open("backup_schedules.txt", "a")
         backup_schedules_file.write(schedule + "\n")
         backup_schedules_file.close()
 
-    if not os.path.exists("./logs"):
-        os.mkdir("./logs")
-
-    log_file = open("./logs/backup_manager.log", "a")
-    log_file.write(log_message + "\n")
-    log_file.close()
-    
-    
+    write_log(log_message)
 
 def handle_list():
-    print("hello world")
+    if not os.path.exists("backup_schedules.txt"):
+        write_log("Error: can't find backup_schedules.txt")
+        return
+
+    schedules_file = open("backup_schedules.txt")
+    result = ""
+    index = 0
+    for line in schedules_file:
+        result += f"{index}: {line}"
+        index += 1
+    print(result.strip("\n"))
+    write_log("Show schedules list")
 
 def handle_delete(index: int):
-    print(index)
+    if not os.path.exists("backup_schedules.txt"):
+        write_log("Error: can't find backup_schedules.txt")
+        return
+    
+    
 
 def handle_start():
     print("hello world")
@@ -89,6 +94,17 @@ def is_valid_schedule(schedule: str):
         return False
 
     return True
+
+def write_log(message: str):
+    if not os.path.exists("./logs"):
+        os.mkdir("./logs")
+
+    now = datetime.now()
+    current_time = now.strftime("%d/%m/%Y %H:%M")
+
+    log_file = open("./logs/backup_manager.log", "a")
+    log_file.write(f"[{current_time}] " + message + "\n")
+    log_file.close()
     
 if __name__ == "__main__":
     main()
