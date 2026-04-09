@@ -2,6 +2,7 @@ import sys
 import re
 from datetime import datetime
 import os
+import subprocess
 
 def main():
     args = sys.argv
@@ -11,34 +12,40 @@ def main():
 
     option = args[1]
 
-    match option:
-        case "create":
-            if len(args) <= 2:
-                print("Usage python3 ./backup_manager.py create [schedule]")
-                exit(1)
+    try:
+        match option:
+            case "create":
+                if len(args) <= 2:
+                    print("Usage python3 ./backup_manager.py create [schedule]")
+                    exit(1)
 
-            handle_create(args[2])
-        case "list":
-            handle_list()
-        case "delete":
-            if len(args) <= 2:
-                print("Usage python3 ./backup_manager.py delete [index]")
-                exit(1)
+                handle_create(args[2])
+            case "list":
+                handle_list()
+            case "delete":
+                if len(args) <= 2:
+                    print("Usage python3 ./backup_manager.py delete [index]")
+                    exit(1)
 
-            try:
-                handle_delete(int(args[2]))
-            except:
-                print("Invalid index number")
+                index: int
+                try:
+                    index = int(args[2])
+                except:
+                    print("Invalid index number")
+                    exit(1)
+
+                handle_delete(index)
+            case "start":
+                handle_start()
+            case "stop":
+                handle_stop()
+            case "backups":
+                handle_backups()
+            case _:
+                print("Invalid option")
                 exit(1)
-        case "start":
-            handle_start()
-        case "stop":
-            handle_stop()
-        case "backups":
-            handle_backups()
-        case _:
-            print("Invalid option")
-            exit(1)
+    except Exception as e:
+        write_log(str(e))
 
 def handle_create(schedule: str):
     log_message = f"Error: malformed schedule: {schedule}"
@@ -69,7 +76,25 @@ def handle_delete(index: int):
         write_log("Error: can't find backup_schedules.txt")
         return
     
+    lines = []
     
+    file = open("backup_schedules.txt")
+    lines = file.readlines()
+    file.close()
+
+    if index >= len(lines):
+        write_log(f"Error: can't find schedule at index {index}")
+        return
+
+    file = open("backup_schedules.txt", "w")
+    for number, line in enumerate(lines):
+        if number == index: 
+            continue
+
+        file.write(line)
+
+    write_log(f"Schedule at index {index} deleted")
+
 
 def handle_start():
     print("hello world")
@@ -81,7 +106,7 @@ def handle_backups():
     print("hello world")
 
 def is_valid_schedule(schedule: str):
-    is_valid_schedule = re.search("^[\/\w.]+;\d{2}:\d{2};[\w.]+$", schedule)
+    is_valid_schedule = re.search("^[\\w.]+;\\d{2}:\\d{2};[\\w.]+$", schedule)
     if is_valid_schedule == None:
         return False
     
