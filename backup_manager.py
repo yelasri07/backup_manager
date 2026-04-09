@@ -103,7 +103,17 @@ def handle_stop():
     print("hello world")
 
 def handle_backups():
-    print("hello world")
+    if not os.path.exists("./backups"):
+        write_log("Error: can't find backups directory")
+        return
+    
+    res = subprocess.run(["ls", "./backups"], capture_output=True, text=True)
+    if res.stderr != "":
+        write_log(res.stderr.strip("\n"))
+        return
+    
+    print(res.stdout.strip("\n"))
+    write_log("Show backups list")
 
 def is_valid_schedule(schedule: str):
     is_valid_schedule = re.search("^[\\w.]+;\\d{2}:\\d{2};[\\w.]+$", schedule)
