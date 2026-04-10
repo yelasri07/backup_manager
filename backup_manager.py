@@ -7,7 +7,7 @@ import subprocess
 def main():
     args = sys.argv
     if len(args) <= 1:
-        print("Usage: python3 ./backup_manager.py [OPTION]")
+        write_log("Error: unknown option")
         exit(1)
 
     option = args[1]
@@ -16,7 +16,7 @@ def main():
         match option:
             case "create":
                 if len(args) <= 2:
-                    print("Usage python3 ./backup_manager.py create [schedule]")
+                    write_log("Error: unknown schedule")
                     exit(1)
 
                 handle_create(args[2])
@@ -24,7 +24,7 @@ def main():
                 handle_list()
             case "delete":
                 if len(args) <= 2:
-                    print("Usage python3 ./backup_manager.py delete [index]")
+                    write_log("Error: unknown index")
                     exit(1)
 
                 index: int
