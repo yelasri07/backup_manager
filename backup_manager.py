@@ -31,7 +31,7 @@ def main():
                 try:
                     index = int(args[2])
                 except:
-                    print("Invalid index number")
+                    write_log("Error: invalid index number")
                     exit(1)
 
                 handle_delete(index)
@@ -42,7 +42,7 @@ def main():
             case "backups":
                 handle_backups()
             case _:
-                print("Invalid option")
+                write_log("Error: unknown command")
                 exit(1)
     except Exception as e:
         write_log(str(e))
