@@ -24,6 +24,10 @@ def log(message):
         pass
 
 def create_tar_backup(source_path, backup_name):
+    if not os.path.exists(source_path):
+        log(f"Error: failed to backup {source_path}: ({e})")
+        return
+    
     tar_path = os.path.join(BACKUP_DIR, f"{backup_name}.tar")
     try:
         with tarfile.open(tar_path, 'w') as tar:
