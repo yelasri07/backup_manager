@@ -97,10 +97,22 @@ def handle_delete(index: int):
 
 
 def handle_start():
-    print("hello world")
+    res = subprocess.run(["pgrep", "-f", "backup_service.py"], capture_output=True, text=True)
+    if res.stdout != "":
+        write_log("Error: backup_service already running")
+        return
+
+    subprocess.Popen(["python3", "./backup_service.py"])
+    write_log("backup_service started")
 
 def handle_stop():
-    print("hello world")
+    res = subprocess.run(["pgrep", "-f", "backup_service.py"], capture_output=True, text=True)
+    if res.stdout == "":
+        write_log("Error: can't stop backup_service")
+        return
+    
+    subprocess.run(["kill", res.stdout.strip("\n")])
+    write_log("backup_service stopped")
 
 def handle_backups():
     if not os.path.exists("./backups"):
@@ -116,7 +128,7 @@ def handle_backups():
     write_log("Show backups list")
 
 def is_valid_schedule(schedule: str):
-    is_valid_schedule = re.search("^[\\w.]+;\\d{2}:\\d{2};[\\w.]+$", schedule)
+    is_valid_schedule = re.search("^[\\w./-]+;\\d{2}:\\d{2};[\\w.]+$", schedule)
     if is_valid_schedule == None:
         return False
     
