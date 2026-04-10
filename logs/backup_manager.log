@@ -1,0 +1,9 @@
+[10/04/2026 12:44] Error: malformed schedule: /home/yelasri/Desktop/snow-capped-mountains-with-full-moon-lo-1920x1080.jpg;12:45:test
+[10/04/2026 12:44] New schedule added: /home/yelasri/Desktop/snow-capped-mountains-with-full-moon-lo-1920x1080.jpg;12:45;test
+[10/04/2026 12:45] New schedule added: /home/yelasri/Desktop/snow-capped-mountains-with-full-moon-lo-1920x1080.jpg;12:46;test
+[10/04/2026 12:45] backup_service started
+[10/04/2026 12:45] Error: backup_service already running
+[10/04/2026 12:46] Error: backup_service already running
+[10/04/2026 12:46] Error: can't find schedule at index 485
+[10/04/2026 12:46] Error: can't find schedule at index 1
+[10/04/2026 12:46] Schedule at index 0 deleted
